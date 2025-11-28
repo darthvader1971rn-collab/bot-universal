@@ -1,0 +1,200 @@
+23:00 - Helena
+23:00 - Memphis
+23:15 - San Antonio
+23:15 - St. Louis
+23:30 - El Paso
+23:30 - Washington
+23:45 - Las Vegas
+23:45 - Montgomery
+00:00 - Charlotte
+00:00 - Columbus
+00:15 - Bismarck
+00:15 - Reno
+00:30 - Minneapolis
+00:30 - Seattle
+00:45 - Little Rock
+00:45 - Salt Lake City
+01:00 - Boise
+01:00 - Denver
+01:00 - Indianapolis
+01:15 - Boston
+01:15 - Detroit
+01:30 - Amarillo
+01:30 - Oklahoma City
+01:45 - Augusta
+01:45 - Phoenix
+02:00 - Norfolk
+02:00 - Omaha
+02:15 - Buffalo
+02:15 - Nashville
+02:15 - Wichita
+02:30 - Jacksonville
+02:30 - Portland
+02:45 - Dallas
+02:45 - Eugene
+03:00 - Albuquerque
+03:00 - Midland
+03:15 - Casper
+03:15 - San Francisco
+03:30 - Chicago
+03:30 - Kansas City
+03:45 - New York
+03:45 - Rapid City
+04:00 - Davenport
+04:00 - New Orleans
+04:15 - Miami
+04:15 - San Diego
+04:30 - Milwaukee
+04:30 - Walla Walla
+04:45 - Houston
+04:45 - Los Angeles
+05:00 - Helena
+05:00 - Memphis
+05:15 - San Antonio
+05:15 - St. Louis
+05:30 - El Paso
+05:30 - Washington
+05:45 - Las Vegas
+05:45 - Montgomery
+06:00 - Charlotte
+06:00 - Columbus
+06:15 - Bismarck
+06:15 - Reno
+06:30 - Minneapolis
+06:30 - Seattle
+06:45 - Little Rock
+06:45 - Salt Lake City
+07:00 - Boise
+07:00 - Denver
+07:00 - Indianapolis
+07:15 - Boston
+07:15 - Detroit
+07:30 - Amarillo
+07:30 - Oklahoma City
+07:45 - Augusta
+07:45 - Phoenix
+08:00 - Norfolk
+08:00 - Omaha
+08:15 - Buffalo
+08:15 - Nashville
+08:15 - Wichita
+08:30 - Jacksonville
+08:30 - Portland
+08:45 - Dallas
+08:45 - Eugene
+09:00 - Albuquerque
+09:00 - Midland
+09:15 - Casper
+09:15 - San Francisco
+09:30 - Chicago
+09:30 - Kansas City
+09:45 - New York
+09:45 - Rapid City
+10:00 - Davenport
+10:00 - New Orleans
+10:15 - Miami
+10:15 - San Diego
+10:30 - Milwaukee
+10:30 - Walla Walla
+10:45 - Houston
+10:45 - Los Angeles
+11:00 - Helena
+11:00 - Memphis
+11:15 - San Antonio
+11:15 - St. Louis
+11:30 - El Paso
+11:30 - Washington
+11:45 - Las Vegas
+11:45 - Montgomery
+12:00 - Charlotte
+12:00 - Columbus
+12:15 - Bismarck
+12:15 - Reno
+12:30 - Minneapolis
+12:30 - Seattle
+12:45 - Little Rock
+12:45 - Salt Lake City
+13:00 - Boise
+13:00 - Denver
+13:00 - Indianapolis
+13:15 - Boston
+13:15 - Detroit
+13:30 - Amarillo
+13:30 - Oklahoma City
+13:45 - Augusta
+13:45 - Phoenix
+14:00 - Norfolk
+14:00 - Omaha
+14:15 - Buffalo
+14:15 - Nashville
+14:15 - Wichita
+14:30 - Jacksonville
+14:30 - Portland
+14:45 - Dallas
+14:45 - Eugene
+15:00 - Albuquerque
+15:00 - Midland
+15:15 - Casper
+15:15 - San Francisco
+15:30 - Chicago
+15:30 - Kansas City
+15:45 - New York
+15:45 - Rapid City
+16:00 - Davenport
+16:00 - New Orleans
+16:15 - Miami
+16:15 - San Diego
+16:30 - Milwaukee
+16:30 - Walla Walla
+16:45 - Houston
+16:45 - Los Angeles
+17:00 - Helena
+17:00 - Memphis
+17:15 - San Antonio
+17:15 - St. Louis
+17:30 - El Paso
+17:30 - Washington
+17:45 - Las Vegas
+17:45 - Montgomery
+18:00 - Charlotte
+18:00 - Columbus
+18:15 - Bismarck
+18:15 - Reno
+18:30 - Minneapolis
+18:30 - Seattle
+18:45 - Little Rock
+18:45 - Salt Lake City
+19:00 - Boise
+19:00 - Denver
+19:00 - Indianapolis
+19:15 - Boston
+19:15 - Detroit
+19:30 - Amarillo
+19:30 - Oklahoma City
+19:45 - Augusta
+19:45 - Phoenix
+20:00 - Norfolk
+20:00 - Omaha
+20:15 - Buffalo
+20:15 - Nashville
+20:15 - Wichita
+20:30 - Jacksonville
+20:30 - Portland
+20:45 - Dallas
+20:45 - Eugene
+21:00 - Albuquerque
+21:00 - Midland
+21:15 - Casper
+21:15 - San Francisco
+21:30 - Chicago
+21:30 - Kansas City
+21:45 - New York
+21:45 - Rapid City
+22:00 - Davenport
+22:00 - New Orleans
+22:15 - Miami
+22:15 - San Diego
+22:30 - Milwaukee
+22:30 - Walla Walla
+22:45 - Houston
+22:45 - Los Angeles

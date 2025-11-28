@@ -1,0 +1,82 @@
+------------------------------------------------------------------
+INSTRUKCJA INSTALACJI I URUCHOMIENIA BOTA (Rail Nation OCR Bot)
+------------------------------------------------------------------
+
+Cześć! Poniżej znajdziesz instrukcję, jak poprawnie skonfigurować i uruchomić bota na swoim komputerze.
+
+------------------------------------------------------------------
+KROK 1: INSTALACJA WYMAGANEGO OPROGRAMOWANIA
+------------------------------------------------------------------
+
+1. PYTHON
+   - Pobierz i zainstaluj język Python (wersja 3.10 lub nowsza) ze strony: https://www.python.org/downloads/
+   - WAŻNE: Podczas instalacji zaznacz opcję "Add Python to PATH" na samym dole pierwszego ekranu instalatora!
+
+2. TESSERACT OCR (Silnik do czytania tekstu z ekranu)
+   - Pobierz instalator Windows (np. ze strony: https://github.com/UB-Mannheim/tesseract/wiki)
+   - Zainstaluj program w domyślnej lokalizacji:
+     C:\Program Files\Tesseract-OCR\tesseract.exe
+   - Jeśli zainstalujesz go w innym miejscu, będziesz musiał zmienić ścieżkę w pliku "settings.py".
+
+------------------------------------------------------------------
+KROK 2: INSTALACJA BIBLIOTEK
+------------------------------------------------------------------
+
+Bot potrzebuje dodatkowych narzędzi do działania. Zainstalujesz je automatycznie.
+
+1. Wejdź do głównego folderu z botem (tam gdzie są pliki main.py, settings.py i requirements.txt).
+2. Kliknij w pasek adresu na górze folderu (tam gdzie jest ścieżka np. C:\Użytkownicy\...\Bot), wpisz "cmd" i naciśnij ENTER. Otworzy się czarne okno.
+3. Wpisz w tym oknie poniższą komendę i zatwierdź ENTEREM:
+
+   pip install -r requirements.txt
+
+   (Poczekaj, aż wszystko się pobierze i zainstaluje).
+
+------------------------------------------------------------------
+KROK 3: KONFIGURACJA NICKU I ROZDZIELCZOŚCI
+------------------------------------------------------------------
+
+1. ZMIANA NICKU
+   - Otwórz plik "settings.py" w Notatniku.
+   - Znajdź linię: PLAYER_NICK = "DarthVader1971"
+   - Zmień "DarthVader1971" na Twój dokładny nick z gry (w cudzysłowie!).
+   - Zapisz plik (Ctrl+S).
+
+2. ROZDZIELCZOŚĆ EKRANU
+   Bot automatycznie wykrywa, czy grasz na 4K (3840x2160) czy Full HD (1920x1080).
+   
+   WAŻNE DLA LAPTOPÓW (Full HD):
+   - Jeśli masz ekran 1920x1080, upewnij się, że skalowanie systemu Windows jest ustawione na 100% lub 125%.
+   - (Prawy przycisk na Pulpit -> Ustawienia ekranu -> Skala i układ).
+   - Bot obsługuje automatycznie skalowanie 100% (1920px) oraz 125% (widziane jako 1536px).
+
+------------------------------------------------------------------
+KROK 4: URUCHOMIENIE BOTA
+------------------------------------------------------------------
+
+1. Uruchom grę i ustaw mapę tak, aby widoczne były miasta konkursowe.
+2. Otwórz folder z botem.
+3. Uruchom plik "main.py" (kliknij dwa razy lub uruchom przez konsolę cmd wpisując: python main.py).
+
+Bot rozpocznie pracę. Komunikaty o tym, co robi, będą wyświetlane w czarnym oknie konsoli.
+
+------------------------------------------------------------------
+ROZWIĄZYWANIE PROBLEMÓW (FAQ)
+------------------------------------------------------------------
+
+A. Bot klika obok przycisków?
+   Prawdopodobnie masz inną rozdzielczość niż 4K lub Full HD, albo niestandardowe skalowanie.
+   Musisz wtedy utworzyć własne pliki CSV z koordynatami.
+   Użyj do tego skryptu "wymiarowanie.py" (jeśli jest dołączony), aby pobrać nowe współrzędne przycisków dla Twojego ekranu i podmień je w folderze "config_laptop" lub "config_4k".
+
+B. Bot nie widzi tekstu / nie kończy konkursu?
+   Upewnij się, że plik "prostokat_listing.csv" obejmuje poprawnie obszar Twojego nicku i wyniku na liście w grze. Możesz to sprawdzić skryptem diagnostycznym (jeśli jest w paczce).
+
+C. Błąd "ModuleNotFoundError"?
+   Wróć do KROKU 2 i upewnij się, że poprawnie wykonałeś komendę "pip install...".
+   
+D. folderze garfiki poglądowe są umieszczone grafiki wskazujące miejsca i rozmiar widgetu konkowego dla wszystkich rozdzielczości FHD ; 2K ; 4K ;
+   nazwane właściwą rozdziałką
+   
+
+Powodzenia!

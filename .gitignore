@@ -1,0 +1,15 @@
+# Ignoruj historię logów
+bot.log
+*.log
+
+# Ignoruj zrzuty ekranu (debugowanie)
+screenshots/
+
+# Ignoruj pliki tymczasowe Pythona
+__pycache__/
+*.pyc
+
+# Ignoruj środowisko wirtualne (jeśli jest)
+venv/
+env/
+.vscode/
