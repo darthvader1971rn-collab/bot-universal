@@ -25,7 +25,7 @@
 01:45 - Phoenix
 02:00 - Norfolk
 02:00 - Omaha
-02:15 - Buffalo
+03:45 - Buffalo
 02:15 - Nashville
 02:15 - Wichita
 02:30 - Jacksonville
@@ -75,7 +75,6 @@
 07:45 - Phoenix
 08:00 - Norfolk
 08:00 - Omaha
-08:15 - Buffalo
 08:15 - Nashville
 08:15 - Wichita
 08:30 - Jacksonville
@@ -87,7 +86,8 @@
 09:15 - Casper
 09:15 - San Francisco
 09:30 - Chicago
-09:30 - Kansas City
+09:30 - Kansas Cty
+09:45 - Buffalo
 09:45 - New York
 09:45 - Rapid City
 10:00 - Davenport
@@ -125,7 +125,7 @@
 13:45 - Phoenix
 14:00 - Norfolk
 14:00 - Omaha
-14:15 - Buffalo
+15:45 - Buffalo
 14:15 - Nashville
 14:15 - Wichita
 14:30 - Jacksonville
@@ -175,7 +175,7 @@
 19:45 - Phoenix
 20:00 - Norfolk
 20:00 - Omaha
-20:15 - Buffalo
+21:45 - Buffalo
 20:15 - Nashville
 20:15 - Wichita
 20:30 - Jacksonville

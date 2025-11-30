@@ -5,68 +5,96 @@ import os
 import time
 import tkinter as tk
 from tkinter import filedialog
+import pytesseract
+from PIL import Image, ImageOps, ImageFilter
+import settings
 
-def zrob_wycinek_z_gui():
-    print("--- DIAGNOSTYKA REGIONU (GUI) ---")
+# Konfiguracja Tesseracta
+pytesseract.pytesseract.tesseract_cmd = settings.TESSERACT_PATH
+
+def testuj_tekst_ocr():
+    print("=== TESTER OCR: WYPISYWANIE TEKSTU ===")
     
-    # 1. Inicjalizacja Tkinter (ukrywamy główne okno)
     root = tk.Tk()
-    root.withdraw() 
+    root.withdraw()
 
-    # 2. Otwarcie okna wyboru pliku
-    print("Otwieram okno wyboru pliku...")
-    sciezka_csv = filedialog.askopenfilename(
-        title="Wybierz plik CSV z definicją regionu",
-        filetypes=[("Pliki CSV", "*.csv"), ("Wszystkie pliki", "*.*")]
-    )
+    while True:
+        print("\n" + "="*50)
+        print("1. Wybierz plik CSV w okienku...")
+        
+        sciezka_csv = filedialog.askopenfilename(
+            title="Wybierz plik CSV regionu",
+            filetypes=[("Pliki CSV", "*.csv")]
+        )
+        
+        if not sciezka_csv:
+            if input("Zakończyć? (t/n): ").lower() == 't': break
+            else: continue
 
-    # Sprawdzenie czy użytkownik coś wybrał
-    if not sciezka_csv:
-        print("[ANULOWANO] Nie wybrano żadnego pliku.")
-        return
+        print(f"[PLIK]: {os.path.basename(sciezka_csv)}")
 
-    print(f"[WYBRANO] {sciezka_csv}")
+        # Wczytanie regionu
+        try:
+            with open(sciezka_csv, newline="", encoding="utf-8") as f:
+                reader = csv.DictReader(f, delimiter=";")
+                row = next(reader)
+                x = int(row["LewyGorny_X"])
+                y = int(row["LewyGorny_Y"])
+                w = int(row["Szerokosc"])
+                h = int(row["Wysokosc"])
+        except Exception as e:
+            print(f"[BŁĄD CSV]: {e}")
+            continue
 
-    # 3. Wczytanie współrzędnych
-    try:
-        with open(sciezka_csv, newline="", encoding="utf-8") as f:
-            reader = csv.DictReader(f, delimiter=";")
-            row = next(reader)
-            x = int(row["LewyGorny_X"])
-            y = int(row["LewyGorny_Y"])
-            w = int(row["Szerokosc"])
-            h = int(row["Wysokosc"])
+        print("2. Ustaw ekran gry! (Zrzut za 3 sekundy)")
+        for i in range(3, 0, -1):
+            print(f"{i}...")
+            time.sleep(1)
+
+        try:
+            # Zrzut
+            screenshot = pyautogui.screenshot(region=(x, y, w, h))
             
-        print(f"[DANE] Region: X={x}, Y={y}, Szer={w}, Wys={h}")
-        
-    except Exception as e:
-        print(f"[BŁĄD] Nie udało się odczytać danych z CSV: {e}")
-        print("Upewnij się, że plik ma nagłówki: LewyGorny_X;LewyGorny_Y;Szerokosc;Wysokosc")
-        return
+            # Obróbka (Musi być taka sama jak w sequence.py dla list)
+            width, height = screenshot.size
+            processed = screenshot.resize((width * 2, height * 2), Image.BICUBIC)
+            gray = ImageOps.grayscale(processed)
+            sharp = gray.filter(ImageFilter.UnsharpMask(radius=2, percent=150, threshold=3))
+            final_img = ImageOps.autocontrast(sharp, cutoff=5)
+            
+            # Zapis podglądu (żebyś widział co poszło do OCR)
+            nazwa_zrzutu = "PODGLAD_OCR.png"
+            final_img.save(nazwa_zrzutu)
+            os.startfile(nazwa_zrzutu) # Otwiera obrazek
 
-    # 4. Odliczanie i zrzut
-    print("\n>>> PRZYGOTUJ EKRAN GRY! <<<")
-    for i in range(3, 0, -1):
-        print(f"Zrzut za {i}...")
-        time.sleep(1)
-    
-    try:
-        # Budujemy ścieżkę do pliku wynikowego w tym samym folderze co CSV
-        folder_pliku = os.path.dirname(sciezka_csv)
-        nazwa_zrzutu = os.path.join(folder_pliku, "PODGLAD.png")
-        
-        screenshot = pyautogui.screenshot(region=(x, y, w, h))
-        screenshot.save(nazwa_zrzutu)
-        
-        print(f"\n[SUKCES] Zapisano obraz: {nazwa_zrzutu}")
-        print("-> Otwórz ten plik i sprawdź, czy widać na nim ikony.")
-        
-        # Opcjonalnie: Automatyczne otwarcie obrazka (działa na Windows)
-        os.startfile(nazwa_zrzutu)
-        
-    except Exception as e:
-        print(f"[BŁĄD] Nie udało się zrobić screenshota: {e}")
+            # Wykonanie OCR
+            config = "--psm 6 --oem 1 -l eng"
+            text = pytesseract.image_to_string(final_img, config=config)
+            
+            # --- WYPISANIE WYNIKU ---
+            print("\n" + "#"*30)
+            print(">>> ROZPOZNANY TEKST (START) <<<")
+            print("#"*30 + "\n")
+            
+            print(text.strip())
+            
+            print("\n" + "#"*30)
+            print(">>> ROZPOZNANY TEKST (KONIEC) <<<")
+            print("#"*30)
+            
+            # Szybka analiza pod kątem wygranej (dla Twojej wygody)
+            if settings.PLAYER_NICK in text:
+                print(f"\n[INFO] Twój nick ({settings.PLAYER_NICK}) ZOSTAL znaleziony w tekście.")
+                if "Completed" in text:
+                    print("[SUKCES] Znaleziono też 'Completed' - bot uznałby wygraną.")
+            else:
+                print(f"\n[UWAGA] Twój nick ({settings.PLAYER_NICK}) NIE ZOSTAL znaleziony.")
+
+        except Exception as e:
+            print(f"[BŁĄD]: {e}")
+
+        if input("\nSprawdzić inny region? (t/n): ").lower() != 't':
+            break
 
 if __name__ == "__main__":
-    zrob_wycinek_z_gui()
-    # input("\nNaciśnij Enter, aby zamknąć...") # Opcjonalne, jeśli konsola zamyka się za szybko
+    testuj_tekst_ocr()
