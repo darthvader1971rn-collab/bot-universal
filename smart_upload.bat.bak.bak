@@ -1,0 +1,92 @@
+@echo off
+chcp 65001 >nul
+cls
+echo ========================================================
+echo          GIT UPLOAD MASTER - BOT MULTIPLE
+echo ========================================================
+echo.
+
+:: --- KONFIGURACJA ---
+set GITHUB_USER=DarthVader1971
+set REPO_NAME=Bot_Multiple
+
+:: Inicjalizacja (jesli nie ma)
+if not exist .git (
+    git init
+    git branch -M main
+    git remote add origin https://github.com/%GITHUB_USER%/%REPO_NAME%.git
+)
+
+:: Sprawdzenie statusu
+echo Aktualny status plikow:
+git status -s
+echo.
+echo ========================================================
+echo WYBIERZ TRYB WYSYLANIA:
+echo.
+echo [1] WSZYSTKO (Kod + Grafiki + Configi)
+echo     - Uzyj tego, jesli to pierwszy upload lub duze zmiany.
+echo.
+echo [2] TYLKO KOD (.py)
+echo     - Bezpieczne! Wysyla tylko logike bota (main, sequence itp.).
+echo     - Nie rusza Twoich grafik ani ustawien lokalnych.
+echo.
+echo [3] TYLKO GRAFIKI (resources)
+echo     - Uzyj, gdy dodales nowe obrazki do folderu resources.
+echo.
+echo ========================================================
+set /p choice="Wybierz opcje (1-3): "
+
+:: Resetowanie poczekalni (Stage)
+git reset >nul 2>&1
+
+if "%choice%"=="1" goto ALL
+if "%choice%"=="2" goto CODE
+if "%choice%"=="3" goto IMG
+goto END
+
+:ALL
+echo.
+echo ---> Wybrano: WSZYSTKO
+git add .
+goto COMMIT
+
+:CODE
+echo.
+echo ---> Wybrano: TYLKO KOD
+:: Dodajemy pliki py z glownego folderu
+git add *.py
+:: Dodajemy pliki py z folderu modules
+git add modules/*.py
+goto COMMIT
+
+:IMG
+echo.
+echo ---> Wybrano: TYLKO GRAFIKI
+git add resources/
+goto COMMIT
+
+:COMMIT
+echo.
+set /p msg="Wpisz opis zmian (np. Poprawa Farmingu): "
+if "%msg%"=="" set msg="Aktualizacja Automatyczna"
+
+git commit -m "%msg%"
+
+echo.
+echo ---> WYSYLANIE DO GITHUB...
+git push -u origin main
+
+if %errorlevel% neq 0 (
+    echo.
+    echo [BLAD] Cos poszlo nie tak. Sprawdz polaczenie lub haslo.
+) else (
+    echo.
+    echo [SUKCES] Pliki zostaly wyslane!
+)
+pause
+exit
+
+:END
+echo Anulowano.
+pause
